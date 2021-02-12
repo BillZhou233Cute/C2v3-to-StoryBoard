@@ -291,7 +291,7 @@ def newDownNoteClick(note, posevents, sprites):
     posevents += [{'id': "pos_down_" +
                    str(noteID), 'note': noteID, 'time': 0, 'opacity_multiplier': 0}]
     sprite = [{'path': storyboard["templates"]["downStyleClick"]["path"],
-               'height': 25, 'layer': 2, 'order': 10001 + noteID,
+               'width': "noteX:0.125", 'layer': 2, 'order': 10001 + noteID,
                'x':"noteX:"+str(noteX), 'y':y1, 'time':"start:"+str(noteID)+":-"+str(addtime), 'opacity':1,
                'states':[{'time': "start:"+str(noteID)+":-"+str(addtime), 'y': y1}, {'time': "start:"+str(noteID), 'y': "noteY:"+str(y2), 'destroy': True}]}]
     sprites += sprite
@@ -311,7 +311,7 @@ def newDownNoteDrag(note, posevents, sprites):
     posevents += [{'id': "pos_down_" +
                    str(noteID), 'note': noteID, 'time': 0, 'opacity_multiplier': 0}]
     sprite = [{'path': storyboard["templates"]["downStyleDrag"]["path"],
-               'height': 100, 'layer': 2, 'order': 10001 + noteID,
+               'width': "noteX:0.125", 'layer': 2, 'order': 10001 + noteID,
                'x':"noteX:"+str(noteX), 'y':y1, 'time':"start:"+str(noteID)+":-"+str(addtime), 'opacity':1,
                'states':[{'time': "start:"+str(noteID)+":-"+str(addtime), 'y': y1}, {'time': "start:"+str(noteID), 'y': "noteY:"+str(y2), 'destroy': True}]}]
     sprites += sprite
