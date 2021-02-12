@@ -183,10 +183,10 @@
             ]
         },
         "downStyleClick": {
-            "path":"DownClick.png"
+            "path":"click.png"
         },
         "downStyleDrag": {
-            "path":"DownDrag.png"
+            "path":"flick.png"
         }
     },
     "texts": [],
