@@ -1,194 +1,136 @@
 {
     "templates": {
-        "eventText": {
-            "size": 20,
-            "opacity": 1,
-            "y": "noteY:-0.05",
-            "x": 0,
-            "layer": 2,
-            "order": 100,
-            "letter_spacing": 0,
-            "states": [
-                {
-                    "add_time": 0.0000000001,
-                    "opacity": 0
-                },
-                {
-                    "add_time": 0.033,
-                    "opacity": 0
-                },
-                {
-                    "add_time": 0.0000000001,
-                    "opacity": 1
-                },
-                {
-                    "add_time": 0.033,
-                    "opacity": 1
-                },
-                {
-                    "add_time": 0.0000000001,
-                    "opacity": 0
-                },
-                {
-                    "add_time": 0.033,
-                    "opacity": 0
-                },
-                {
-                    "add_time": 0.0000000001,
-                    "opacity": 1
-                },
-                {
-                    "add_time": 0.033,
-                    "opacity": 1
-                },
-                {
-                    "add_time": 0.0000000001,
-                    "opacity": 0
-                },
-                {
-                    "add_time": 0.033,
-                    "opacity": 0
-                },
-                {
-                    "add_time": 0.0000000001,
-                    "opacity": 1
-                },
-                {
-                    "add_time": 0.033,
-                    "opacity": 1
-                },
-                {
-                    "add_time": 0.0000000001,
-                    "opacity": 0
-                },
-                {
-                    "add_time": 0.033,
-                    "opacity": 0
-                },
-                {
-                    "add_time": 0.0000000001,
-                    "opacity": 1
-                },
-                {
-                    "add_time": 0.033,
-                    "opacity": 1
-                },
-                {
-                    "add_time": 0.0000000001,
-                    "opacity": 0
-                },
-                {
-                    "add_time": 0.033,
-                    "opacity": 0
-                },
-                {
-                    "add_time": 0.0000000001,
-                    "opacity": 1
-                },
-                {
-                    "add_time": 0.033,
-                    "opacity": 1,
-                    "commit": "end show text"
-                },
-                {
-                    "add_time": 0.673,
-                    "opacity": 1,
-                    "commit": "start hide text"
-                },
-                {
-                    "add_time": 0.0000000001,
-                    "opacity": 0
-                },
-                {
-                    "add_time": 0.033,
-                    "opacity": 0
-                },
-                {
-                    "add_time": 0.0000000001,
-                    "opacity": 1
-                },
-                {
-                    "add_time": 0.033,
-                    "opacity": 1
-                },
-                {
-                    "add_time": 0.0000000001,
-                    "opacity": 0
-                },
-                {
-                    "add_time": 0.033,
-                    "opacity": 0
-                },
-                {
-                    "add_time": 0.0000000001,
-                    "opacity": 1
-                },
-                {
-                    "add_time": 0.033,
-                    "opacity": 1
-                },
-                {
-                    "add_time": 0.0000000001,
-                    "opacity": 0
-                },
-                {
-                    "add_time": 0.033,
-                    "opacity": 0
-                },
-                {
-                    "add_time": 0.0000000001,
-                    "opacity": 1
-                },
-                {
-                    "add_time": 0.033,
-                    "opacity": 1
-                },
-                {
-                    "add_time": 0.0000000001,
-                    "opacity": 0
-                },
-                {
-                    "add_time": 0.033,
-                    "opacity": 0
-                },
-                {
-                    "add_time": 0.0000000001,
-                    "opacity": 1
-                },
-                {
-                    "add_time": 0.033,
-                    "opacity": 1
-                },
-                {
-                    "add_time": 0.0000000001,
-                    "opacity": 0
-                },
-                {
-                    "add_time": 0.033,
-                    "opacity": 0
-                }
-            ]
-        },
-        "eventTextL": {
-            "states": [
-                {
-                    "easing": "easeInQuint",
-                    "add_time": 0,
-                    "letter_spacing": 0
-                },
-                {
-                    "add_time": 1.333,
-                    "letter_spacing": 100
-                }
-            ]
-        },
         "downStyleClick": {
             "path":"click.png"
         },
         "downStyleDrag": {
             "path":"flick.png"
+        },
+        "bangtoidSiblingLine": {
+            "path":"divisor.jpg"
         }
     },
     "texts": [],
-    "controllers":[]
+    "controllers": [
+        {
+            "time": -1,
+            "background_dim": 0.4
+        }
+    ],
+    "sprites": [
+        {
+            "path": "scanline.png",
+            "width": 1200,
+            "layer": 2,
+            "order": 1000,
+            "x": 0,
+            "y": "noteY:0",
+            "time": -1,
+            "opacity": 1
+        },
+        {
+            "path": "divisor.jpg",
+            "preserve_aspect": false,
+            "width": 2,
+            "height": "noteY:2",
+            "layer": 2,
+            "order": 101,
+            "x": "noteX:0.0625",
+            "y": "noteY:1",
+            "time": -1,
+            "opacity": 0.5,
+            "color": "#8AB9F1"
+        },
+        {
+            "path": "divisor.jpg",
+            "preserve_aspect": false,
+            "width": 2,
+            "height": "noteY:2",
+            "layer": 2,
+            "order": 102,
+            "x": "noteX:0.1875",
+            "y": "noteY:1",
+            "time": -1,
+            "opacity": 0.5,
+            "color": "#8AB9F1"
+        },
+        {
+            "path": "divisor.jpg",
+            "preserve_aspect": false,
+            "width": 2,
+            "height": "noteY:2",
+            "layer": 2,
+            "order": 103,
+            "x": "noteX:0.3125",
+            "y": "noteY:1",
+            "time": -1,
+            "opacity": 0.5,
+            "color": "#8AB9F1"
+        },
+        {
+            "path": "divisor.jpg",
+            "preserve_aspect": false,
+            "width": 2,
+            "height": "noteY:2",
+            "layer": 2,
+            "order": 104,
+            "x": "noteX:0.4375",
+            "y": "noteY:1",
+            "time": -1,
+            "opacity": 0.5,
+            "color": "#8AB9F1"
+        },
+        {
+            "path": "divisor.jpg",
+            "preserve_aspect": false,
+            "width": 2,
+            "height": "noteY:2",
+            "layer": 2,
+            "order": 105,
+            "x": "noteX:0.5625",
+            "y": "noteY:1",
+            "time": -1,
+            "opacity": 0.5,
+            "color": "#8AB9F1"
+        },
+        {
+            "path": "divisor.jpg",
+            "preserve_aspect": false,
+            "width": 2,
+            "height": "noteY:2",
+            "layer": 2,
+            "order": 106,
+            "x": "noteX:0.6875",
+            "y": "noteY:1",
+            "time": -1,
+            "opacity": 0.5,
+            "color": "#8AB9F1"
+        },
+        {
+            "path": "divisor.jpg",
+            "preserve_aspect": false,
+            "width": 2,
+            "height": "noteY:2",
+            "layer": 2,
+            "order": 107,
+            "x": "noteX:0.8125",
+            "y": "noteY:1",
+            "time": -1,
+            "opacity": 0.5,
+            "color": "#8AB9F1"
+        },
+        {
+            "path": "divisor.jpg",
+            "preserve_aspect": false,
+            "width": 2,
+            "height": "noteY:2",
+            "layer": 2,
+            "order": 108,
+            "x": "noteX:0.9375",
+            "y": "noteY:1",
+            "time": -1,
+            "opacity": 0.5,
+            "color": "#8AB9F1"
+        }
+    ]
 }
