@@ -1,10 +1,13 @@
 {
     "templates": {
-        "downStyleClick": {
-            "path":"click.png"
+        "bangtoidBlue": {
+            "path":"blue.png"
         },
-        "downStyleDrag": {
-            "path":"flick.png"
+        "bangtoidGray": {
+            "path":"gray.png"
+        },
+        "bangtoidPink": {
+            "path":"pink.png"
         },
         "bangtoidSiblingLine": {
             "path":"divisor.jpg"
