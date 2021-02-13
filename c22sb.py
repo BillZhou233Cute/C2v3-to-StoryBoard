@@ -286,7 +286,7 @@ def newDownNoteClick(note, posevents, sprites):
     page = chart["page_list"][note["page_index"]]
     pagelen = page["end_tick"] - page["start_tick"]
     addtime = pagelen / chart["time_base"] / 3
-    addtime = 0.8
+    addtime = 0.7
     y2 = note["y"]
     if note["NoteDirection"] == 0:
         y1 = 420
@@ -294,15 +294,15 @@ def newDownNoteClick(note, posevents, sprites):
         y1 = -420
     # 记录同时打击线
     if note["has_sibling"]:
-        noteTick = note[tick]
-        siblingState = {'id': 10001 + len(bangtoidNoteSibling), 'y1': y1, 'y2': "noteY:" + str(y2), 't1': ticktotime(tick) - addtime, 't2': ticktotime(tick), "x": []}
+        noteTick = note["tick"]
+        siblingState = {'id': 1001 + len(bangtoidNoteSibling), 'y1': y1, 'y2': "noteY:" + str(y2), 't1': ticktotime(noteTick) - addtime, 't2': ticktotime(noteTick), 'x': []}
         if noteTick in bangtoidNoteSibling: siblingState = bangtoidNoteSibling[noteTick]
         siblingState["x"].append(noteX)
         bangtoidNoteSibling[noteTick] = siblingState
     posevents += [{'id': "pos_down_" +
                    str(noteID), 'note': noteID, 'time': 0, 'opacity_multiplier': 0}]
     sprite = [{'path': storyboard["templates"]["downStyleClick"]["path"],
-               'width': "noteX:0.125", 'layer': 2, 'order': 100001 + noteID,
+               'width': "noteX:0.125", 'layer': 2, 'order': 10001 + noteID,
                'x':"noteX:"+str(noteX), 'y':y1, 'time':"start:"+str(noteID)+":-"+str(addtime), 'opacity':1,
                'states':[{'time': "start:"+str(noteID)+":-"+str(addtime), 'y': y1}, {'time': "start:"+str(noteID), 'y': "noteY:"+str(y2), 'destroy': True}]}]
     sprites += sprite
@@ -314,7 +314,7 @@ def newDownNoteDrag(note, posevents, sprites):
     page = chart["page_list"][note["page_index"]]
     pagelen = page["end_tick"] - page["start_tick"]
     addtime = pagelen / chart["time_base"] / 3
-    addtime = 0.8
+    addtime = 0.7
     y2 = note["y"]
     if note["NoteDirection"] == 0:
         y1 = 420
@@ -322,30 +322,31 @@ def newDownNoteDrag(note, posevents, sprites):
         y1 = -420
     # 记录同时打击线
     if note["has_sibling"]:
-        noteTick = note[tick]
-        siblingState = {'id': 10001 + len(bangtoidNoteSibling), 'y1': y1, 'y2': "noteY:" + str(y2), 't1': ticktotime(tick) - addtime, 't2': ticktotime(tick), 'x': []}
+        noteTick = note["tick"]
+        siblingState = {'id': 1001 + len(bangtoidNoteSibling), 'y1': y1, 'y2': "noteY:" + str(y2), 't1': ticktotime(noteTick) - addtime, 't2': ticktotime(noteTick), 'x': []}
         if noteTick in bangtoidNoteSibling: siblingState = bangtoidNoteSibling[noteTick]
         siblingState["x"].append(noteX)
         bangtoidNoteSibling[noteTick] = siblingState
     posevents += [{'id': "pos_down_" +
                    str(noteID), 'note': noteID, 'time': 0, 'opacity_multiplier': 0}]
     sprite = [{'path': storyboard["templates"]["downStyleDrag"]["path"],
-               'width': "noteX:0.125", 'layer': 2, 'order': 100001 + noteID,
+               'width': "noteX:0.125", 'layer': 2, 'order': 10001 + noteID,
                'x':"noteX:"+str(noteX), 'y':y1, 'time':"start:"+str(noteID)+":-"+str(addtime), 'opacity':1,
                'states':[{'time': "start:"+str(noteID)+":-"+str(addtime), 'y': y1}, {'time': "start:"+str(noteID), 'y': "noteY:"+str(y2), 'destroy': True}]}]
     sprites += sprite
 
 # 绘制同时打击线
 
-def generateBangtoidSibling():
-    for siblingState in bangtoidNoteSibling:
+def generateBangtoidSibling(sprites):
+    for key in bangtoidNoteSibling:
+        siblingState = bangtoidNoteSibling[key]
         siblingState["x"].sort()
         lineWidth = siblingState["x"][-1] - siblingState["x"][0]
         linePos = siblingState["x"][0] + lineWidth / 2
         lineID = siblingState["id"]
-        sprite = [{'path': storyboard["templates"]["bangtoidSiblingLine"]["path"], "preserve_aspect": false,
+        sprite = [{'path': storyboard["templates"]["bangtoidSiblingLine"]["path"], "preserve_aspect": False,
                'width': "noteX:" + str(lineWidth), 'height': 2, 'layer': 2, 'order': lineID,
-               'x':"noteX:"+str(linePos), 'y':y1, 'time':siblingState["t1"], 'opacity':1,
+               'x':"noteX:"+str(linePos), 'y': siblingState["y1"], 'time':siblingState["t1"], 'opacity':1,
                'states':[{'time': siblingState["t1"], 'y': siblingState["y1"]}, {'time': siblingState["t2"], 'y': siblingState["y2"], 'destroy': True}]}]
         sprites += sprite
 
@@ -433,6 +434,7 @@ scannerPositionEvents = []
 notePositionEvents = []
 textEventTimes = []
 textEventEasings = []
+siblingSprites = []
 downSprites = []
 uiEvents = []
 uiEventsA = []
@@ -480,6 +482,10 @@ for note in chart["note_list"]:
         newDownNoteClick(note, notePositionEvents, downSprites)
     elif note["type"] == 9:
         newDownNoteDrag(note, notePositionEvents, downSprites)
+
+# 生成同时打击线
+
+generateBangtoidSibling(siblingSprites)
 
 ### 生成UI变化: 以combo为全体ui
 try:
@@ -539,6 +545,7 @@ print("StoryBoard.controllers Part.2 PosFun Finished")
 storyboard["note_controllers"] = notePositionEvents
 print("StoryBoard.note_controllers Finished")
 
+storyboard["sprites"] += siblingSprites
 storyboard["sprites"] += downSprites
 print("StoryBoard.sprites Finished")
 
